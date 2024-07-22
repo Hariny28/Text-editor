@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Text Editor</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+
+    .container {
+      width: 80%;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .control-group {
+      display: flex;
+      align-items: center;
+    }
+
+    .control-group label {
+      margin-right: 10px;
+    }
+
+    .control-group select,
+    .control-group input {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .editor {
+      height: 200px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 4px;
+      resize: vertical;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .buttons button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    .buttons button:hover {
+      background-color: #45a049;
+    }
+
+    /* Styles for the toggle button */
+    .toggle-button {
+      position: relative;
+      display: inline-block;
+      width: 40px;
+      height: 20px;
+    }
+
+    .toggle-button input[type="checkbox"] {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+
+    input[type="checkbox"]:checked + .slider {
+      background-color: #2196F3;
+    }
+
+    input[type="checkbox"]:checked + .slider:before {
+      transform: translateX(18px);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="controls">
+      <div class="control-group">
+        <label for="font-family">Font Family:</label>
+        <select id="font-family">
+          </select>
+      </div>
+      <div class="control-group">
+        <label for="variant">Variant:</label>
+        <select id="variant">
+          <option value="normal">Normal</option>
+          <option value="bold">Bold</option>
+          <option value="italic">Italic</option>
+          <option value="bold italic">Bold Italic</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label for="italic">Italic:</label>
+        <label class="toggle-button">
+          <input type="checkbox" id="italic">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+    <textarea class="editor" id="editor" placeholder="Hello World"></textarea>
+    <div class="buttons">
+      <button id="reset">Reset</button>
+      <button id="save">Save</button>
+    </div>
+  </div>
+<script>
+    // Load font families from a JSON file
+    /*fetch("./punt-frontend-assignment (1).json")
+      .then(response => response.json())
+      .then(fontFamilies => {
+        // Populate the font family dropdown
+        const fontFamilySelect = document.getElementById('font-family');
+        fontFamilies.forEach(fontFamily => {
+          const option = document.createElement('option');
+          option.value = fontFamily;
+          option.text = fontFamily;
+          fontFamilySelect.add(option);
+        });
+
+        // Initialize the editor
+        const editor = document.getElementById('editor');
+        editor.style.fontFamily = fontFamilySelect.value;
+        editor.style.fontWeight = 'normal';
+        editor.style.fontStyle = 'normal';
+
+        // Add event listeners for controls
+        fontFamilySelect.addEventListener('change', () => {
+editor.style.fontFamily = fontFamilySelect.value;
+        });
+
+        document.getElementById('variant').addEventListener('change', () => {
+          const variant = document.getElementById('variant').value;
+          if (variant === 'bold') {
+            editor.style.fontWeight = 'bold';
+          } else if (variant === 'italic') {
+            editor.style.fontStyle = 'italic';
+          } else if (variant === 'bold italic') {
+            editor.style.fontWeight = 'bold';
+            editor.style.fontStyle = 'italic';
+          } else {
+            editor.style.fontWeight = 'normal';
+            editor.style.fontStyle = 'normal';
+          }
+        });
+
+        document.getElementById('italic').addEventListener('change', () => {
+          editor.style.fontStyle = document.getElementById('italic').checked? 'italic' : 'normal';
+        });
+
+        // Add event listeners for buttons
+        document.getElementById('reset').addEventListener('click', () => {
+          editor.value = 'Hello World';
+          editor.style.fontFamily = fontFamilySelect.value;
+          editor.style.fontWeight = 'normal';
+          editor.style.fontStyle = 'normal';
+        });
+
+        document.getElementById('save').addEventListener('click', () => {
+          // Implement save functionality here
+          console.log('Saving text:', editor.value);
+        });
+      });*/
+  </script>
+</body>
+</html>
