@@ -67,7 +67,6 @@
       background-color: #45a049;
     }
 
-    /* Styles for the toggle button */
     .toggle-button {
       position: relative;
       display: inline-block;
@@ -118,8 +117,7 @@
     <div class="controls">
       <div class="control-group">
         <label for="font-family">Font Family:</label>
-        <select id="font-family">
-          </select>
+        <select id="font-family"></select>
       </div>
       <div class="control-group">
         <label for="variant">Variant:</label>
@@ -144,7 +142,7 @@
       <button id="save">Save</button>
     </div>
   </div>
-<script>
+  <script>
     // Load font families from a JSON file
     fetch("punt-frontend-assignment (1).json")
       .then(response => response.json())
@@ -166,14 +164,16 @@
 
         // Add event listeners for controls
         fontFamilySelect.addEventListener('change', () => {
-editor.style.fontFamily = fontFamilySelect.value;
+          editor.style.fontFamily = fontFamilySelect.value;
         });
 
         document.getElementById('variant').addEventListener('change', () => {
           const variant = document.getElementById('variant').value;
           if (variant === 'bold') {
             editor.style.fontWeight = 'bold';
+            editor.style.fontStyle = 'normal';
           } else if (variant === 'italic') {
+            editor.style.fontWeight = 'normal';
             editor.style.fontStyle = 'italic';
           } else if (variant === 'bold italic') {
             editor.style.fontWeight = 'bold';
@@ -185,7 +185,7 @@ editor.style.fontFamily = fontFamilySelect.value;
         });
 
         document.getElementById('italic').addEventListener('change', () => {
-          editor.style.fontStyle = document.getElementById('italic').checked? 'italic' : 'normal';
+          editor.style.fontStyle = document.getElementById('italic').checked ? 'italic' : 'normal';
         });
 
         // Add event listeners for buttons
@@ -197,7 +197,6 @@ editor.style.fontFamily = fontFamilySelect.value;
         });
 
         document.getElementById('save').addEventListener('click', () => {
-          // Implement save functionality here
           console.log('Saving text:', editor.value);
         });
       });
